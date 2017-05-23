@@ -5,6 +5,8 @@
 
 ## 预览
 
+[Web 版线上DEMO](https://www.madcoder.cn/demos/wepy-weui-demo/index.html)
+
 ![image](https://cloud.githubusercontent.com/assets/2182004/26298989/c0ae78b2-3f0b-11e7-8979-e37884a86a43.png)
 
 ## 体验步骤
