@@ -17,11 +17,9 @@ page,
         <view class="page__bd">
             <view class="weui-tab">
                 <view class="weui-navbar">
-                    <block wx:for="{{tabs}}" wx:key="*this">
-                        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" @tap="tabClick">
-                            <view class="weui-navbar__title">{{item}}</view>
-                        </view>
-                    </block>
+                    <view wx:for="{{tabs}}" wx:key="*this" id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" @tap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
                     <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
                 </view>
                 <view class="weui-tab__panel">

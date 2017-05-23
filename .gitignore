@@ -1,6 +1,6 @@
 dist/
 node_modules/
-web/
+web/style
 sftp-config.json
 log
 npm-debug.log
