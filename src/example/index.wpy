@@ -1,0 +1,134 @@
+<style type="less">
+.weui-flex{
+    align-items: center;
+}
+.weui-cells{
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: .3s;
+    &:before, &:after{
+        display: none;
+    }
+    &_show{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.weui-cell{
+    &:before{
+        right: 15px;
+    }
+}
+
+.kind-list{}
+.kind-list__item{
+    margin: 10px 0;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    overflow: hidden;
+    &:first-child{
+        margin-top: 0;
+    }
+}
+.kind-list__img{
+    width: 30px;
+    height: 30px;
+}
+
+.kind-list__item-hd{
+    padding: 20px;
+    transition: opacity .3s;
+    &_show{
+        opacity: .4;
+    }
+}
+.kind-list__item-bd{
+    height: 0;
+    overflow: hidden;
+    &_show{
+        height: auto;
+    }
+}
+</style>
+<template>
+    <view class="page">
+        <view class="page__hd">
+            <view class="page__title">WeUI</view>
+            <view class="page__desc">WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。</view>
+        </view>
+        <view class="page__bd page__bd_spacing">
+            <view class="kind-list">
+                <repeat for="{{list}}" key="id">
+                    <view class="kind-list__item">
+                        <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" @tap="toggle({{item.id}})">
+                            <view class="weui-flex__item">{{item.name}}</view>
+                            <image class="kind-list__img" src="../images/icon_nav_{{item.id}}.png"></image>
+                        </view>
+                        <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                                <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+                                    <navigator url="./{{page}}" class="weui-cell weui-cell_access">
+                                        <view class="weui-cell__bd">{{page}}</view>
+                                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                                    </navigator>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </repeat>
+            </view>
+        </view>
+        <view class="page__ft">
+            <image src="../images/icon_footer.png" style="width: 84px; height: 19px;"></image>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy';
+
+    export default class Index extends wepy.page {
+
+        data = {
+            list: [
+                {
+                    id: 'form',
+                    name: '表单',
+                    open: false,
+                    pages: ['button', 'list', 'input', 'slider', 'uploader']
+                },
+                {
+                    id: 'widget',
+                    name: '基础组件',
+                    open: false,
+                    pages: ['article', 'badge', 'flex', 'footer', 'gallery', 'grid', 'icons', 'loadmore', 'panel', 'preview', 'progress']
+                },
+                {
+                    id: 'feedback',
+                    name: '操作反馈',
+                    open: false,
+                    pages: ['actionsheet', 'dialog', 'msg', 'picker', 'toast']
+                },
+                {
+                    id: 'nav',
+                    name: '导航相关',
+                    open: false,
+                    pages: ['navbar', 'tabbar']
+                },
+                {
+                    id: 'search',
+                    name: '搜索相关',
+                    open: false,
+                    pages: ['searchbar']
+                }
+            ]
+        };
+
+        methods = {
+            toggle (id) {
+                this.list.forEach(v => v.open = (v.id === id) ? !v.open : false);
+            }
+        };
+    }
+</script>

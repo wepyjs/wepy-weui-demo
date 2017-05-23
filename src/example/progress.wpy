@@ -1,0 +1,89 @@
+<style>
+.weui-progress{
+    margin-bottom: 24px;
+}
+</style>
+<template>
+    <view class="page">
+        <view class="page__hd">
+            <view class="page__title">Progress</view>
+            <view class="page__desc">进度条，这里采用小程序原生的progress</view>
+        </view>
+        <view class="page__bd page__bd_spacing">
+            <view class="weui-progress">
+                <view class="weui-progress__bar">
+                    <progress percent="0" stroke-width="3" />
+                </view>
+                <view class="weui-progress__opr">
+                    <icon type="cancel" size="22"></icon>
+                </view>
+            </view>
+            <view class="weui-progress">
+                <view class="weui-progress__bar">
+                    <progress percent="50" stroke-width="3" />
+                </view>
+                <view class="weui-progress__opr">
+                    <icon type="cancel" size="22"></icon>
+                </view>
+            </view>
+            <view class="weui-progress">
+                <view class="weui-progress__bar">
+                    <progress percent="80" stroke-width="3" />
+                </view>
+                <view class="weui-progress__opr">
+                    <icon type="cancel" size="22"></icon>
+                </view>
+            </view>
+            <view class="weui-progress">
+                <view class="weui-progress__bar">
+                    <progress percent="{{progress}}" stroke-width="3" />
+                </view>
+                <view class="weui-progress__opr">
+                    <icon type="cancel" size="22"></icon>
+                </view>
+            </view>
+            <view class="weui-btn-area">
+                <button type="primary" @tap="upload" disabled="{{disabled}}">上传</button>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy';
+
+    export default class Progress extends wepy.page {
+
+        data = {
+            progress: 0,
+            disabled: false
+        };
+
+        methods = {
+            upload () {
+                if (this.disabled) {
+                    return;
+                }
+
+                this.progress = 0;
+                this.disabled = true;
+
+                this.next();
+            }
+        }
+
+        next () {
+            if (this.progress >= 100) {
+                this.disabled = false;
+                return true;
+            }
+            this.progress++;
+
+            setTimeout(() => {
+                this.$apply(() => {
+                    this.next();
+                });
+            }, 20);
+        }
+    }
+</script>

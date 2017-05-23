@@ -1,0 +1,11 @@
+dist/
+node_modules/
+web/
+sftp-config.json
+log
+npm-debug.log
+.vscode
+coverage
+lerna-debug.log
+.DS_Store
+.wepycache

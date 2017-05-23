@@ -1,0 +1,55 @@
+<style>
+page{
+    background-color: #FFFFFF;
+}
+</style>
+<template>
+    <view class="page">
+        <view class="page__hd">
+            <view class="page__title">Dialog</view>
+            <view class="page__desc">对话框，采用小程序原生的modal</view>
+        </view>
+        <view class="page__bd">
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="default" @tap="openConfirm">Confirm Dialog</button>
+                <button class="weui-btn" type="default" @tap="openAlert">Alert Dialog</button>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy';
+
+    export default class Dialog extends wepy.page {
+
+        methods = {
+            async openConfirm () {
+                let res = await wepy.showModal({
+                    title: '弹窗标题',
+                    content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+                    confirmText: '主操作',
+                    cancelText: '辅助操作'
+                });
+
+                console.log(res);
+                if (res.confirm) {
+                    console.log('用户点击主操作');
+                } else {
+                    console.log('用户点击辅助操作');
+                }
+            },
+            async openAlert () {
+
+                let res = await wepy.showModal({
+                    content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+                    showCancel: false
+                });
+
+                if (res.confirm) {
+                    console.log('用户点击确定');
+                }
+            }
+        }
+    }
+</script>
