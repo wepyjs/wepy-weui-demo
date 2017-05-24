@@ -11,8 +11,9 @@ slider{
         </view>
 
         <view class="page__bd page__bd_spacing">
-            <slider/>
-            <slider show-value value="50"/>
+            <slider disabled/>
+            <slider min="20" max="80" color="red" active-color="blue" background-color="yellow"/>
+            <slider show-value value="50" step="5" @change="mychange"/>
         </view>
     </view>
 </template>
@@ -22,5 +23,10 @@ slider{
 
     export default class Slider extends wepy.page {
 
+        methods = {
+            mychange (e) {
+                console.log(`value is ${e.detail.value}`);
+            }
+        }
     }
 </script>

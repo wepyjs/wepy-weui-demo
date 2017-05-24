@@ -6,8 +6,8 @@ module.exports = {
   wpyExt: ".wpy",
   build: {
     web: {
-      apis: ['showToast'],
-      components: ['navigator', 'button', 'icon', 'progress'],
+      apis: ['showToast', 'showActionSheet', 'showModal'],
+      components: ['navigator', 'button', 'icon', 'progress', 'slider'],
       htmlTemplate: path.join('src', 'index.template.html'),
       htmlOutput: path.join('web', 'index.html'),
       jsOutput: path.join('web', 'index.js')
