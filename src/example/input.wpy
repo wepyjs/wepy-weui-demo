@@ -198,7 +198,7 @@
 <script>
     import wepy from 'wepy';
 
-    export default class Button extends wepy.page {
+    export default class Input extends wepy.page {
 
         data = {
             tipsFlag: false,
