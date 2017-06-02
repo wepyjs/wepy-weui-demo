@@ -7,7 +7,7 @@ module.exports = {
   build: {
     web: {
       apis: ['showToast', 'showActionSheet', 'showModal'],
-      components: ['navigator', 'button', 'icon', 'progress', 'slider'],
+      components: ['navigator', 'button', 'icon', 'progress', 'slider', 'radio', 'radio-group', 'checkbox', 'checkbox-group', 'switch'],
       htmlTemplate: path.join('src', 'index.template.html'),
       htmlOutput: path.join('web', 'index.html'),
       jsOutput: path.join('web', 'index.js')

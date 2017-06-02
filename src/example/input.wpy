@@ -204,12 +204,12 @@
             tipsFlag: false,
 
             radioItems: [
-                {name: 'cell standard', value: '0'},
+                {name: 'cell standard', value: '0', checked: false},
                 {name: 'cell standard', value: '1', checked: true}
             ],
             checkboxItems: [
                 {name: 'standard is dealt for u.', value: '0', checked: true},
-                {name: 'standard is dealicient for u.', value: '1'}
+                {name: 'standard is dealicient for u.', value: '1', checked: false}
             ],
 
             date: '2016-09-01',
